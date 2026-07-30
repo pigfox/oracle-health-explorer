@@ -1,0 +1,38 @@
+name: CI
+
+# Everything here runs on a clean checkout with NO secrets. Build, test, fuzz and
+# analysis never read .env — only deploying does, and that does not happen in CI.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # PIGFOX SOLIDITY PIPELINE v1 — the estate's one verification standard, defined
+  # once in pigfox/solidity-pipeline and consumed here rather than copied. The gate
+  # SCRIPTS come from lib/solidity-pipeline, vendored as a submodule at a commit
+  # this repo pins, so a local run and this run are the same bytes.
+  #
+  # https://github.com/pigfox/solidity-pipeline
+  #
+  # There are NO coverage exclusions in this repo. Every line in src/ is reachable
+  # from a test, so the coverage input is left at its empty default rather than
+  # carrying a placeholder that would later read as a decision.
+  pipeline:
+    uses: pigfox/solidity-pipeline/.github/workflows/solidity.yml@v1
+    with:
+      # test/Properties.sol declares nine echidna_* predicates and states the same
+      # number in pigfoxPropertyCount(). Both fuzzers assert they registered
+      # exactly this many, so a property that silently stops being picked up fails
+      # the job instead of reporting a smaller green run.
+      #
+      # Bump this, pigfoxPropertyCount() and the predicate together, in one commit.
+      expected-properties: 9

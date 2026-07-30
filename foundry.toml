@@ -1,0 +1,87 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc = "0.8.28"
+
+optimizer = true
+optimizer_runs = 200
+
+extra_output = ["storageLayout"]
+
+# crytic-compile (Echidna, Medusa, Slither) consumes these artifacts directly via
+# --foundry-ignore-compile, so it never needs its own solc download.
+build_info = true
+
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    # PIGFOX SOLIDITY PIPELINE v1, vendored as a submodule. The shared property
+    # base lives here; the gate scripts alongside it are what CI runs, so a
+    # local run and a CI run are the same bytes.
+    "pipeline/=lib/solidity-pipeline/src/",
+]
+
+# --- gas measurement -------------------------------------------------------
+# Every entry point here is `view`, and the page reads them over eth_call, so a
+# visitor never pays. But a PROTOCOL that adopts this check pays for it inside
+# its own borrow/liquidate transaction, on every price read. That makes the cost
+# of checking a feed a real number someone has to budget for, so it is measured
+# and snapshotted rather than left as an unknown.
+#
+# gas_reports names the contract explicitly instead of ["*"] so the report is the
+# health entry points and not a wall of test scaffolding.
+gas_reports = ["OracleHealthChecker"]
+gas_reports_include_tests = false
+
+# gas_snapshot_emit writes .gas-snapshot on `forge snapshot`; that file is
+# COMMITTED, so a gas change shows up as a reviewable diff.
+gas_snapshot_emit = true
+
+# gas_snapshot_check stays false so an intentional change is not a build failure
+# while it is being made.
+#
+# BE PRECISE ABOUT WHAT THIS DOES AND DOES NOT ENFORCE. This setting is read by
+# `forge snapshot`, not by `forge test`, and the pipeline's forge job runs
+# `forge build`, `forge test` and the coverage gate — it never runs
+# `forge snapshot`. So nothing in CI currently fails on a gas change. The
+# committed snapshot is a REVIEWABLE RECORD, not a gate, and saying otherwise in
+# a comment would be the kind of claim that outlives its truth.
+#
+# Regenerate it with `forge snapshot` when a change moves the numbers, and let
+# the diff be read. Note that the figures are profile-dependent: the invariant
+# lines record `runs`/`calls` from the DEFAULT profile (256 x 64), and the ci
+# profile below walks 512 x 96, so a snapshot taken under one profile does not
+# describe the other.
+gas_snapshot_check = false
+
+[profile.ci]
+
+[profile.default.fuzz]
+runs = 512
+
+[profile.default.invariant]
+runs = 256
+# depth intentionally matches seqLen in echidna.yaml and callSequenceLength in
+# medusa.json, so all three engines walk sequences of the same length and a bug
+# found by one is reachable by the rest.
+depth = 64
+# The harness bounds every input at its entry points, and the checker's whole
+# design promise is that it does not revert — an unreachable or reverting
+# aggregator is reported as UNAVAILABLE instead. So a revert reaching the
+# invariant runner is a harness bug, or a violation of that promise, and must
+# fail loud rather than silently shrinking the search space to calls that
+# happened to succeed.
+fail_on_revert = true
+
+[profile.ci.fuzz]
+runs = 1024
+
+[profile.ci.invariant]
+runs = 512
+depth = 96
+
+[fmt]
+line_length = 110
+tab_width = 4
+bracket_spacing = false
+int_types = "long"
