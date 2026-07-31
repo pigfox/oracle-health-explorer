@@ -189,6 +189,10 @@ contract OracleHealthChecker is IOracleHealthChecker {
     ///         either reverts on the underflow or, unchecked, reads a
     ///         near-`2**256` age as fresh — which is the FUTURE_TIMESTAMP
     ///         failure mode this explorer exists to name.
+    /// @param updatedAt The round's own timestamp, straight from the aggregator.
+    /// @param observedAt The time to measure the round against, normally `block.timestamp`.
+    /// @return The age in seconds, or zero when the round carries no usable timestamp —
+    ///         zero means "age is not a meaningful number here", never "brand new".
     function secondsSince(uint256 updatedAt, uint256 observedAt) public pure returns (uint256) {
         if (updatedAt == 0 || updatedAt > observedAt) return 0;
         return observedAt - updatedAt;
@@ -198,6 +202,9 @@ contract OracleHealthChecker is IOracleHealthChecker {
     /// @dev    A cast, not a table. Deriving it from the enum's declaration
     ///         order means it cannot drift out of agreement with the order the
     ///         states are documented and tested in.
+    /// @param health The state to rank.
+    /// @return The enum's ordinal, so callers can compare two states with `>` and get
+    ///         "more severe" rather than having to know the state names.
     function severityOf(Health health) public pure returns (uint8) {
         return uint8(health);
     }
@@ -212,6 +219,10 @@ contract OracleHealthChecker is IOracleHealthChecker {
     }
 
     /// @notice The feed registered at `index` and its max age.
+    /// @param index Position in the registry, in the order the constructor received them.
+    ///        Reverts with `NoSuchFeed` rather than returning an empty config, so a bad
+    ///        index can never be mistaken for a feed at address zero.
+    /// @return The aggregator address and the max age that applies to it.
     function feedAt(uint256 index) public view returns (FeedConfig memory) {
         if (index >= _feeds.length) revert NoSuchFeed(index, _feeds.length);
         return _feeds[index];
@@ -220,6 +231,12 @@ contract OracleHealthChecker is IOracleHealthChecker {
     /// @notice Read one registered feed and report its health.
     /// @dev    `view`, so the page reads it over `eth_call`: no transaction, no
     ///         signature, no visitor gas.
+    /// @param index Position of the feed in the registry. Reverts with `NoSuchFeed` if
+    ///        out of range.
+    /// @return report The feed address, its max age, the round that was read, the time it
+    ///         was checked, and the verdict. An aggregator that cannot be read yields
+    ///         `UNAVAILABLE` with the round fields left at zero rather than a revert —
+    ///         an unreachable feed is a finding to display, not an error to swallow.
     function check(uint256 index) public view returns (Report memory report) {
         if (index >= _feeds.length) revert NoSuchFeed(index, _feeds.length);
         FeedConfig memory config = _feeds[index];

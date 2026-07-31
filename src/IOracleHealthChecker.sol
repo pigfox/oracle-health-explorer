@@ -100,17 +100,30 @@ interface IOracleHealthChecker {
         returns (Health);
 
     /// @notice How old a round is, or zero when age is not a meaningful number.
+    /// @param updatedAt The round's own timestamp, straight from the aggregator.
+    /// @param observedAt The time to measure the round against, normally `block.timestamp`.
+    /// @return The age in seconds, or zero when the round carries no usable timestamp —
+    ///         zero means "age is not a meaningful number here", never "brand new".
     function secondsSince(uint256 updatedAt, uint256 observedAt) external view returns (uint256);
 
     /// @notice The severity ranking of a state, as a comparable number.
+    /// @param health The state to rank.
+    /// @return The enum's ordinal, so callers can compare two states with `>` and get
+    ///         "more severe" rather than having to know the state names.
     function severityOf(Health health) external view returns (uint8);
 
     /// @notice How many feeds are registered.
+    /// @return The number of feeds, fixed at construction and never changed.
     function feedCount() external view returns (uint256);
 
     /// @notice The feed registered at `index` and its max age.
+    /// @param index Position in the registry, in the order the constructor received them.
+    /// @return The aggregator address and the max age that applies to it.
     function feedAt(uint256 index) external view returns (FeedConfig memory);
 
     /// @notice Read one registered feed and report its health.
+    /// @param index Position of the feed in the registry.
+    /// @return The feed address, its max age, the round that was read, the time it was
+    ///         checked, and the verdict.
     function check(uint256 index) external view returns (Report memory);
 }
