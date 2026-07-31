@@ -6,7 +6,7 @@
 them, if anything.**
 
 Live on Base Sepolia (84532), verified, read-only:
-[`0x67F74D6dF6c08F090069EBEeC37a07035eF1Bd40`](https://sepolia.basescan.org/address/0x67F74D6dF6c08F090069EBEeC37a07035eF1Bd40#code)
+[`0x401a78D79d503a838c82a7d23e7D5b81fc28CdB0`](https://sepolia.basescan.org/address/0x401a78D79d503a838c82a7d23e7D5b81fc28CdB0#code)
 
 ---
 
@@ -231,7 +231,7 @@ Reading the live contract needs no key and sends no transaction:
 
 ```bash
 cast call --rpc-url https://sepolia.base.org \
-  0x67F74D6dF6c08F090069EBEeC37a07035eF1Bd40 \
+  0x401a78D79d503a838c82a7d23e7D5b81fc28CdB0 \
   "check(uint256)((uint8,address,uint8,uint80,int256,uint256,uint256,uint256,uint256))" 3
 ```
 

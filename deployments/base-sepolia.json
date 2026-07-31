@@ -1,14 +1,14 @@
 {
   "network": "base-sepolia",
   "chainId": 84532,
-  "deployBlock": 44827955,
+  "deployBlock": 44880822,
   "explorer": "https://sepolia.basescan.org",
   "deployer": "0xb6c3a56CA2f99e3F5d7d16ad968df9f71cCC184D",
   "contracts": {
-    "OracleHealthChecker": "0x67F74D6dF6c08F090069EBEeC37a07035eF1Bd40"
+    "OracleHealthChecker": "0x401a78D79d503a838c82a7d23e7D5b81fc28CdB0"
   },
   "deployTx": {
-    "OracleHealthChecker": "0xa30603a328128d779f9518f349f694faa2625401054d8c5cd546a7df0e0b8578"
+    "OracleHealthChecker": "0x445be70129be1b57e563b88ddd40827c5e51c776ace0774a801fb6a4f2e8c995"
   },
   "deployGasUsed": {
     "OracleHealthChecker": 722927
@@ -19,10 +19,26 @@
   "constructorArgs": {
     "//": "The registry IS the contract: there is no setter, so these four pairs and their four max ages are what it means forever. They match script/Deploy.s.sol line for line, and the ABI-encoded form below is what Basescan shows under Constructor Arguments.",
     "feeds": [
-      {"pair": "BTC / USD", "aggregator": "0x0FB99723Aee6f420beAD13e6bBB79b7E6F034298", "maxAgeSeconds": 4500},
-      {"pair": "ETH / USD", "aggregator": "0x4aDC67696bA383F43DD60A9e78F2C97Fbbfc7cb1", "maxAgeSeconds": 4500},
-      {"pair": "LINK / USD", "aggregator": "0xb113F5A928BCfF189C998ab20d753a47F9dE5A61", "maxAgeSeconds": 4500},
-      {"pair": "USDC / USD", "aggregator": "0xd30e2101a97dcbAeBCBC04F14C3f624E67A35165", "maxAgeSeconds": 90000}
+      {
+        "pair": "BTC / USD",
+        "aggregator": "0x0FB99723Aee6f420beAD13e6bBB79b7E6F034298",
+        "maxAgeSeconds": 4500
+      },
+      {
+        "pair": "ETH / USD",
+        "aggregator": "0x4aDC67696bA383F43DD60A9e78F2C97Fbbfc7cb1",
+        "maxAgeSeconds": 4500
+      },
+      {
+        "pair": "LINK / USD",
+        "aggregator": "0xb113F5A928BCfF189C998ab20d753a47F9dE5A61",
+        "maxAgeSeconds": 4500
+      },
+      {
+        "pair": "USDC / USD",
+        "aggregator": "0xd30e2101a97dcbAeBCBC04F14C3f624E67A35165",
+        "maxAgeSeconds": 90000
+      }
     ],
     "encoded": "000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000fb99723aee6f420bead13e6bbb79b7e6f03429800000000000000000000000000000000000000000000000000000000000011940000000000000000000000004adc67696ba383f43dd60a9e78f2c97fbbfc7cb10000000000000000000000000000000000000000000000000000000000001194000000000000000000000000b113f5a928bcff189c998ab20d753a47f9de5a610000000000000000000000000000000000000000000000000000000000001194000000000000000000000000d30e2101a97dcbaebcbc04f14c3f624e67a351650000000000000000000000000000000000000000000000000000000000015f90"
   },
@@ -31,9 +47,18 @@
     "measuredAtChainTimestamp": 1785421112,
     "observedHeartbeats": {
       "//": "Measured by reading getRoundData() on the round BEFORE the latest and differencing updatedAt. This is what makes the per-feed max age a measurement rather than a preference.",
-      "BTC / USD": {"intervalSeconds": 166, "note": "deviation-driven"},
-      "ETH / USD": {"intervalSeconds": 154, "note": "deviation-driven"},
-      "LINK / USD": {"intervalSeconds": 230, "note": "deviation-driven"},
+      "BTC / USD": {
+        "intervalSeconds": 166,
+        "note": "deviation-driven"
+      },
+      "ETH / USD": {
+        "intervalSeconds": 154,
+        "note": "deviation-driven"
+      },
+      "LINK / USD": {
+        "intervalSeconds": 230,
+        "note": "deviation-driven"
+      },
       "USDC / USD": {
         "intervalSeconds": 86424,
         "secondIntervalSeconds": 86416,
@@ -44,39 +69,39 @@
     "roundIdShape": "phase-encoded: roundId = phaseId << 64 | aggregatorRoundId, which is why live values sit just above 2**64."
   },
   "sanityRun": {
-    "atChainTimestamp": 1785424246,
+    "atChainTimestamp": 1785529998,
     "method": "eth_call against the deployed contract, no transaction sent",
     "note": "script/SanityRun.s.sol read every figure below off the LIVE contract, read the same round data straight off each aggregator, derived the expected verdict with an INDEPENDENT restatement of the rule, and required them to agree. It also required each aggregator's description() to match the pair claimed here — a registry pointing at a healthy feed for the wrong asset is a failure no health check would notice. Any disagreement reverts the script.",
     "verdicts": {
       "BTC / USD": {
-        "answer": "6473500000000",
+        "answer": "6292431000000",
         "decimals": 8,
-        "updatedAt": 1785424162,
-        "ageSeconds": 84,
+        "updatedAt": 1785529556,
+        "ageSeconds": 442,
         "maxAgeSeconds": 4500,
         "health": "HEALTHY"
       },
       "ETH / USD": {
-        "answer": "191654000000",
+        "answer": "186660000000",
         "decimals": 8,
-        "updatedAt": 1785423784,
-        "ageSeconds": 462,
+        "updatedAt": 1785529582,
+        "ageSeconds": 416,
         "maxAgeSeconds": 4500,
         "health": "HEALTHY"
       },
       "LINK / USD": {
-        "answer": "848431003",
+        "answer": "817457251",
         "decimals": 8,
-        "updatedAt": 1785423538,
-        "ageSeconds": 708,
+        "updatedAt": 1785529274,
+        "ageSeconds": 724,
         "maxAgeSeconds": 4500,
         "health": "HEALTHY"
       },
       "USDC / USD": {
-        "answer": "99980507",
+        "answer": "99977383",
         "decimals": 8,
-        "updatedAt": 1785409184,
-        "ageSeconds": 15062,
+        "updatedAt": 1785495604,
+        "ageSeconds": 34394,
         "maxAgeSeconds": 90000,
         "health": "HEALTHY",
         "note": "Over four hours old and correctly HEALTHY. Against BTC's 4,500-second threshold this exact round would read STALE — which is the entire argument for a per-feed max age, visible in one row."
@@ -90,5 +115,9 @@
     "slitherFindings": 0,
     "echidna": "9/9 passing over 100,096 calls",
     "medusa": "9/9 passing over 101,437 calls"
+  },
+  "supersedes": {
+    "//": "PF-S123 natspec changed src/, so PF-S124 redeployed and re-verified. The previous contract stays on chain; the source that produced it is tagged verified-onchain-2026-07-31.",
+    "OracleHealthChecker": "0x67F74D6dF6c08F090069EBEeC37a07035eF1Bd40"
   }
 }
