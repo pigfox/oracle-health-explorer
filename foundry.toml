@@ -85,3 +85,18 @@ line_length = 110
 tab_width = 4
 bracket_spacing = false
 int_types = "long"
+
+# --- forge lint ------------------------------------------------------------
+# CANONICAL BLOCK. Copied verbatim from lib/solidity-pipeline/config/lint.toml
+# and held in agreement with it by scripts/lint-config-check.sh, which CI runs.
+# `forge lint` has no --config-file, so unlike Slither and Solhint this cannot be
+# consumed from the submodule; it is the same deliberate copy as echidna.yaml and
+# medusa.json, with the same check keeping the copies honest.
+# Every exclusion's reasoning is in lib/solidity-pipeline/docs/forge-lint-rules.md.
+[lint]
+ignore = ["test/**/*.sol", "script/**/*.sol"]
+exclude_lints = [
+    "screaming-snake-case-const",
+    "screaming-snake-case-immutable",
+    "unwrapped-modifier-logic",
+]
