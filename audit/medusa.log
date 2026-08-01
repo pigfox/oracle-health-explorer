@@ -1,0 +1,56 @@
+=== medusa fuzz --config medusa.json ===
+=== captured by lib/solidity-pipeline/scripts/audit-logs.sh, non-TTY, full verbosity ===
+
+[1m[32m⇾[0m[0m [1mReading the configuration file at: [1mmedusa.json[0m[0m
+[1m[32m⇾[0m[0m [1mCompiling targets with [1mcrytic-compile[0m[0m
+[1m[32m⇾[0m[0m [1mRunning command:
+/home/peter/.local/bin/crytic-compile . --export-format solc --foundry-ignore-compile[0m
+[1m[32m⇾[0m[0m [1mFinished compiling targets in 6s[0m
+[1m[33mwarn[0m[0m [1m[1martifacts: [0mMedusa is running against the [1m[33msame[0m[0m build artifacts as previously (last run: 15 hours ago)[0m
+[1m[32m⇾[0m[0m [1mNo Slither cached results found at slither_results.json[0m
+[1m[32m⇾[0m[0m [1mRunning Slither:
+/home/peter/.local/bin/slither . --ignore-compile --print echidna --json -[0m
+[1m[33mwarn[0m[0m [1mFailed to run slither[31m
+‣ exit status 1[0m[0m
+[1m[32m⇾[0m[0m [1mSetting up test chain[0m
+[1m[32m⇾[0m[0m [1mFinished setting up test chain[0m
+[1m[32m⇾[0m[0m [1mCreating corpus...[0m
+[1m[32m⇾[0m[0m [1mInitializing corpus...[0m
+[1m[32m⇾[0m[0m [1mFuzzing with [1m8[0m workers[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_unreachable_feed_is_unavailable()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_fresh_positive_complete_is_healthy()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_incomplete_round_is_reported()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_verdict_is_the_most_severe_applicable_state()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_feed_verdict_matches_pure_logic()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_non_positive_answer_is_never_healthy()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_max_age_boundary_is_exact()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_future_timestamp_is_reported()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[NOT STARTED] [0m[0m[1mProperty Test: Properties.echidna_age_never_improves_health()[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m      0s[0m, calls: [1m         0 (     0/sec)[0m, seq/s: [1m     0[0m, branches: [1m   136[0m, corpus: [1m    0[0m, failures: [1m0/0[0m, gas/s: [1m           0[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m      3s[0m, calls: [1m      9542 (  3179/sec)[0m, seq/s: [1m    61[0m, branches: [1m   682[0m, corpus: [1m   39[0m, failures: [1m0/186[0m, gas/s: [1m   192056101[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m      6s[0m, calls: [1m     18345 (  2923/sec)[0m, seq/s: [1m    45[0m, branches: [1m   687[0m, corpus: [1m   40[0m, failures: [1m0/322[0m, gas/s: [1m   175486963[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m      9s[0m, calls: [1m     28105 (  3245/sec)[0m, seq/s: [1m    51[0m, branches: [1m   693[0m, corpus: [1m   41[0m, failures: [1m0/476[0m, gas/s: [1m   195154601[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     12s[0m, calls: [1m     38395 (  3413/sec)[0m, seq/s: [1m    53[0m, branches: [1m   696[0m, corpus: [1m   42[0m, failures: [1m0/636[0m, gas/s: [1m   204670616[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     15s[0m, calls: [1m     48858 (  3485/sec)[0m, seq/s: [1m    54[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/800[0m, gas/s: [1m   208447293[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     18s[0m, calls: [1m     58864 (  3320/sec)[0m, seq/s: [1m    52[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/957[0m, gas/s: [1m   198445737[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     21s[0m, calls: [1m     69238 (  3453/sec)[0m, seq/s: [1m    54[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/1120[0m, gas/s: [1m   206766857[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     24s[0m, calls: [1m     79004 (  3252/sec)[0m, seq/s: [1m    50[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/1272[0m, gas/s: [1m   194615972[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     27s[0m, calls: [1m     89623 (  3539/sec)[0m, seq/s: [1m    54[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/1437[0m, gas/s: [1m   211554670[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     30s[0m, calls: [1m     99713 (  3344/sec)[0m, seq/s: [1m    52[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/1595[0m, gas/s: [1m   200837913[0m[0m
+[1m[32m⇾[0m[0m [1m[1mfuzz: [0melapsed: [1m     33s[0m, calls: [1m    110521 (  3589/sec)[0m, seq/s: [1m    55[0m, branches: [1m   699[0m, corpus: [1m   43[0m, failures: [1m0/1763[0m, gas/s: [1m   214646107[0m[0m
+[1m[32m⇾[0m[0m [1mTransaction test limit reached, halting now...[0m
+[1m[32m⇾[0m[0m [1mFuzzer stopped, test results follow below ...[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_age_never_improves_health()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_feed_verdict_matches_pure_logic()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_fresh_positive_complete_is_healthy()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_future_timestamp_is_reported()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_incomplete_round_is_reported()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_max_age_boundary_is_exact()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_non_positive_answer_is_never_healthy()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_unreachable_feed_is_unavailable()[0m[0m
+[1m[32m⇾[0m[0m [1m[1m[32m[PASSED] [0m[0m[1mProperty Test: Properties.echidna_verdict_is_the_most_severe_applicable_state()[0m[0m
+[1m[32m⇾[0m[0m [1mTest summary: [1m[32m9[0m[0m test(s) passed, [1m[31m0[0m[0m test(s) failed[0m
+[1m[32m⇾[0m[0m [1mhtml report(s) saved to: medusa-corpus/coverage/coverage_report.html[0m
+[1m[32m⇾[0m[0m [1mlcov report(s) saved to: medusa-corpus/coverage/lcov.info[0m
+
+=== exit status: 0 ===

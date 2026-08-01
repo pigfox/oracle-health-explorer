@@ -1,0 +1,268 @@
+=== /home/peter/Documents/pigfox2-repos/oracle-health-explorer/lib/solidity-pipeline/scripts/coverage.sh ===
+=== captured by lib/solidity-pipeline/scripts/audit-logs.sh, non-TTY, full verbosity ===
+
+[1;34m==>[0m Running forge coverage in /home/peter/Documents/pigfox2-repos/oracle-health-explorer
+Warning: optimizer settings and `viaIR` have been disabled for accurate coverage reports.
+If you encounter "stack too deep" errors, consider using `--ir-minimum` which enables `viaIR` with minimum optimization resolving most of the errors
+Compiling 30 files with Solc 0.8.28
+Solc 0.8.28 finished in 4.94s
+Compiler run successful!
+Analysing contracts...
+Running tests...
+
+Ran 24 tests for test/Invariants.t.sol:InvariantsTest
+[PASS] invariant_ageNeverImprovesHealth() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_feedVerdictMatchesPureLogic() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_freshPositiveCompleteIsHealthy() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_futureTimestampIsReported() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_incompleteRoundIsReported() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_maxAgeBoundaryIsExact() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_nonPositiveAnswerIsNeverHealthy() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_unreachableFeedIsUnavailable() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] invariant_verdictIsTheMostSevereApplicableState() (runs: 256, calls: 16384, reverts: 0)
+
+╭------------+-----------------------+-------+---------+----------╮
+| Contract   | Selector              | Calls | Reverts | Discards |
++=================================================================+
+| Properties | probeAging            | 2386  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeBoundary         | 2236  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeDegenerateRounds | 2412  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFeedRound        | 2379  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeFreshRound       | 2303  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeMostSevere       | 2390  | 0       | 0        |
+|------------+-----------------------+-------+---------+----------|
+| Properties | probeUnreachableFeeds | 2278  | 0       | 0        |
+╰------------+-----------------------+-------+---------+----------╯
+
+[PASS] test_aFaithfulCheckerTripsNothing() (gas: 6949588)
+[PASS] test_anInteriorDrawDoesNotCatchTheOffByOne() (gas: 6726265)
+[PASS] test_declaredPropertyCountMatchesThisFile() (gas: 21935)
+[PASS] test_detectsADeadFeedNotReportingUnavailable() (gas: 6763134)
+[PASS] test_detectsAFutureTimestampNotReported() (gas: 6728231)
+[PASS] test_detectsAGoodRoundReportedUnhealthy() (gas: 6728539)
+[PASS] test_detectsANonPositiveAnswerReadingAsHealthy() (gas: 6728479)
+[PASS] test_detectsAVerdictThatIsNotTheMostSevere() (gas: 6721276)
+[PASS] test_detectsAnIncompleteRoundNotReported() (gas: 6728132)
+[PASS] test_detectsAnOffByOneAtTheStalenessBoundary() (gas: 6733413)
+[PASS] test_detectsTheWrapperDisagreeingWithThePureLogic() (gas: 6745824)
+[PASS] test_detectsWaitingMakingAFeedLookHealthier() (gas: 6727150)
+[PASS] test_harnessHoldsFiveDistinctFeeds() (gas: 57324)
+[PASS] test_harnessSaysWhatItProves() (gas: 10477)
+[PASS] test_theRoundRobinReachesEveryUnreachableFeed() (gas: 6836050)
+Suite result: ok. 24 passed; 0 failed; 0 skipped; finished in 26.42s (159.57s CPU time)
+
+Ran 39 tests for test/OracleHealthChecker.t.sol:OracleHealthCheckerTest
+[PASS] test_acceptsAMaxAgeExactlyAtTheCeiling() (gas: 879707)
+[PASS] test_acceptsExactlyTheMaximumNumberOfFeeds() (gas: 1592877)
+[PASS] test_addressWithNoCodeIsUnavailable() (gas: 877171)
+[PASS] test_ageExactlyMaxAgeIsHealthy() (gas: 7662)
+[PASS] test_checkReadsTheFeedAndReportsEveryInput() (gas: 39577)
+[PASS] test_checkReportsStaleAfterTheHeartbeatLapses() (gas: 40208)
+[PASS] test_checkRevertsPastTheEnd() (gas: 15322)
+[PASS] test_decimalsRevertingStillYieldsAVerdict() (gas: 1050845)
+[PASS] test_decimalsWithTheWrongShapeStillYieldsAVerdict() (gas: 1045520)
+[PASS] test_feedAtRevertsPastTheEnd() (gas: 13997)
+[PASS] test_feedCountAndFeedAt() (gas: 20168)
+[PASS] test_feedRevertingWithEmptyReturndataIsUnavailable() (gas: 919254)
+[PASS] test_feedWithTheWrongAbiShapeIsUnavailable() (gas: 960796)
+[PASS] test_futureOutranksNonPositive() (gas: 7598)
+[PASS] test_futureTimestamp() (gas: 7426)
+[PASS] test_healthyRound() (gas: 7649)
+[PASS] test_incompleteOutranksNonPositive() (gas: 7425)
+[PASS] test_incompleteRound() (gas: 7320)
+[PASS] test_negativeAnswer() (gas: 7554)
+[PASS] test_nonPositiveOutranksStale() (gas: 7718)
+[PASS] test_oneSecondInsideMaxAgeIsHealthy() (gas: 7827)
+[PASS] test_oneSecondPastMaxAgeIsStale() (gas: 7904)
+[PASS] test_rejectsAMaxAgeAboveTheCeiling() (gas: 50082)
+[PASS] test_rejectsAZeroMaxAge() (gas: 42936)
+[PASS] test_rejectsAnEmptyRegistry() (gas: 38192)
+[PASS] test_rejectsMoreFeedsThanTheCeiling() (gas: 76093)
+[PASS] test_rejectsTheSameFeedTwice() (gas: 112281)
+[PASS] test_rejectsTheZeroAddress() (gas: 40719)
+[PASS] test_revertingFeedIsUnavailable() (gas: 46116)
+[PASS] test_secondsSinceFutureTimestampIsZero() (gas: 6703)
+[PASS] test_secondsSinceIncompleteRoundIsZero() (gas: 6632)
+[PASS] test_secondsSinceNormalCase() (gas: 6881)
+[PASS] test_severityIsTheEnumOrdinalAndStrictlyIncreasing() (gas: 13862)
+[PASS] test_staleRound() (gas: 7824)
+[PASS] test_theReportIsSelfVerifying() (gas: 42690)
+[PASS] test_theSameAgeIsStaleForOneFeedAndHealthyForAnother() (gas: 10711)
+[PASS] test_tryCatchDoesNotSurviveAWrongShapedFeedButTheCheckerDoes() (gas: 1146284)
+[PASS] test_zeroAgeIsHealthy() (gas: 7443)
+[PASS] test_zeroAnswerIsNonPositive() (gas: 7531)
+Suite result: ok. 39 passed; 0 failed; 0 skipped; finished in 26.42s (51.40ms CPU time)
+
+Ran 2 test suites in 26.42s (52.83s CPU time): 63 tests passed, 0 failed, 0 skipped (63 total tests)
+
+╭-----------------------------+-----------------+-----------------+-----------------+---------------╮
+| File                        | % Lines         | % Statements    | % Branches      | % Funcs       |
++===================================================================================================+
+| src/OracleHealthChecker.sol | 100.00% (56/56) | 100.00% (75/75) | 100.00% (16/16) | 100.00% (9/9) |
+|-----------------------------+-----------------+-----------------+-----------------+---------------|
+| Total                       | 100.00% (56/56) | 100.00% (75/75) | 100.00% (16/16) | 100.00% (9/9) |
+╰-----------------------------+-----------------+-----------------+-----------------+---------------╯
+
+[1;34m==>[0m Enforcing 100% coverage on src/ (no exclusions)
+  OK    src/OracleHealthChecker.sol              100% lines / statements / branches / functions
+
+PASSED: 1 file(s) at 100% on all four metrics.
+
+=== exit status: 0 ===
