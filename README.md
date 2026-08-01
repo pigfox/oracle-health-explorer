@@ -160,6 +160,7 @@ once, and a local run and a CI run are the same bytes.
 
 | Stage | Result |
 | --- | --- |
+| lint | `forge lint` and Solhint both clean on `src/`; the copied `[lint]` block matches the canonical one |
 | `forge fmt --check` | clean |
 | `forge build --sizes` | 2,075 B runtime |
 | `forge test` | 63 passing |
@@ -167,6 +168,14 @@ once, and a local run and a CI run are the same bytes.
 | Slither, `fail-on: low` | 0 findings |
 | Echidna | 9/9 over 100,096 calls |
 | Medusa | 9/9 over 101,437 calls |
+
+Lint is **step 1**, and it is first because it is cheapest: no fuzzing, no
+coverage run and no chain, so a style or natspec regression fails in seconds
+instead of after the fuzzers. `forge lint` is invoked **bare** — passing it a path
+overrides the `ignore` config. Every rule the estate turns off is argued in the
+pipeline's
+[`docs/forge-lint-rules.md`](https://github.com/pigfox/solidity-pipeline/blob/main/docs/forge-lint-rules.md)
+and [`docs/solhint-rules.md`](https://github.com/pigfox/solidity-pipeline/blob/main/docs/solhint-rules.md).
 
 ### The nine properties
 
@@ -220,6 +229,9 @@ and the web page all talk to Base Sepolia 84532 itself.
 git clone --recurse-submodules https://github.com/pigfox/oracle-health-explorer
 cd oracle-health-explorer
 
+lib/solidity-pipeline/scripts/lint-config-check.sh all
+forge lint                                       # bare: a path overrides `ignore`
+npx --yes solhint@6.2.3 -c lib/solidity-pipeline/.solhint.json --max-warnings 0 'src/**/*.sol'
 forge test
 lib/solidity-pipeline/scripts/coverage.sh
 rm -rf crytic-export && forge build --force      # never fuzz coverage artifacts
